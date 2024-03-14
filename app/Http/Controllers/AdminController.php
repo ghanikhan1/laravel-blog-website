@@ -37,7 +37,6 @@ class AdminController extends Controller
             if ($post->image){
                         // Build the old image path
                 $oldImagePath = public_path('postimage/'. $post->image);
-                dd($oldImagePath);
                         // Check if the image file exists and delete it
                 if (File::exists($oldImagePath)){
                     File::delete($oldImagePath);
@@ -57,6 +56,7 @@ class AdminController extends Controller
 
     public function show_post(Request $request)
     {
-        return view('components.admin.show_post');
+        $posts = Post::all();
+        return view('components.admin.show_post', compact('posts'));
     }
 }

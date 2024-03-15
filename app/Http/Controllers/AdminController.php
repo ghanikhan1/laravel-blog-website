@@ -68,4 +68,30 @@ class AdminController extends Controller
         return redirect()->back()
             ->with('message', 'Post Deleted successfully!');
     }
+
+    public function edit_post($id)
+    {
+        $post = Post::findorfail($id);
+
+        return view('components.admin.edit_post', compact('post'));
+    }
+
+    public function update_post(Request $request,$id)
+    {
+        $data = Post::findorfail($id);
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $image = $request->image;
+
+        if ($image){
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
+            $request->image->move('postimage', $imagename);
+            // storing the image name in DB
+            $data->image = $imagename;
+        }
+
+        $data->save();
+
+        return redirect()->back()->with('message'.'Post Updated successfully');
+    }
 }

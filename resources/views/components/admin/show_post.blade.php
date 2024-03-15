@@ -30,6 +30,7 @@
                     <td>User type</td>
                     <td>Image</td>
                     <td>Delete</td>
+                    <td>Edit</td>
                 </tr>
                 @foreach($posts as $post)
 
@@ -44,6 +45,11 @@
                         <td>
 {{--                            <a href="{{url('delete_post',$post->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete')">Delete</a>--}}
                             <a href="{{url('delete_post',$post->id)}}" class="btn btn-danger delete-confirm" data-id="{{$post->id}}">Delete</a>
+                        </td>
+                        <td>
+                            <a href="{{url('edit_post', $post->id)}}" class="btn btn-success">
+                                Edit
+                            </a>
                         </td>
                     </tr>
                 @endforeach

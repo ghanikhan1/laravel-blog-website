@@ -6,15 +6,13 @@
         <div class="services_section_2">
             <div class="row">
                 @foreach($posts as $post)
-
                     <div class="col-md-4">
-                        <div><img src="{{'/postimage/'.$post->image}}" class="services_img"></div>
+                        <div><img class="mb-20 h-[200px] w-[350px]" src="{{'/postimage/'.$post->image}}" class="services_img"></div>
                         <h4>{{$post->title}}</h4>
                         <p>Post by <b>{{$post->name}}</b></p>
-                        <div class="btn_main"><a href="#">Read More</a></div>
+                        <div class="btn_main"><a href="{{route('post_detail', $post->id)}}">Read More</a></div>
                     </div>
                 @endforeach
-
             </div>
         </div>
     </div>

@@ -33,4 +33,10 @@ class HomeController extends Controller
         return view('components.home.homepage', compact('posts'));
     }
 
+    public function post_detail($id)
+    {
+        $post = Post::findOrFail($id);
+        return view('components.home.post_detail', compact('post'));
+    }
+
 }

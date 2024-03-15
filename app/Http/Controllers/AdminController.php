@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Illuminate\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
@@ -62,7 +62,7 @@ class AdminController extends Controller
 
     public function delete_post($id)
     {
-        $post = Post::find($id);
+        $post = Post::findorfail($id);
         $post->delete();
 
         return redirect()->back()

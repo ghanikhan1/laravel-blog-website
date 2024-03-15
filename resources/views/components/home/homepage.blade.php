@@ -14,7 +14,7 @@
 </div>
 <!-- header section end -->
 <!-- services section start -->
-    <x-home.service/>
+    <x-home.service :$posts/>
 <!-- services section end -->
 <!-- about section start -->
     <x-home.about/>
